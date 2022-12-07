@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:social_app/ui/auth/home_screen/home_screen.dart';
 import 'package:social_app/ui/widgets/custom_button.dart';
 import 'package:social_app/utils/constants.dart';
@@ -20,6 +22,29 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   FirebaseAuth _auth = FirebaseAuth.instance;
   bool isLoading = false;
+
+  GoogleSignInAccount? _user;
+  // final googleSignIn = GoogleSignIn();
+
+  Future gooleSinginFu() async {
+    try {
+      final googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) return;
+      _user = googleUser;
+      final googleAuth = await googleUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+      print("fonction run");
+      setState(() {});
+    } catch (e) {
+      print("Error : $e");
+      ReUse().loginErrorToast("Google Sign Error");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,6 +140,51 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
+                ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        minimumSize: Size(double.infinity, 50)),
+                    onPressed: () {
+                      gooleSinginFu();
+                      print("Function Call");
+                    },
+                    icon: FaIcon(
+                      FontAwesomeIcons.google,
+                      color: Colors.red,
+                    ),
+                    label: Text("Signup with Google")),
+                // GestureDetector(
+                //   onTap: () {},
+                //   child: Padding(
+                //       padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                //       child: Row(
+                //           mainAxisSize: MainAxisSize.min,
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           children: [
+                //             Container(
+                //               height: 100,
+                //               width: 100,
+                //               decoration: const BoxDecoration(
+                //                 image: DecorationImage(
+                //                     image: NetworkImage(
+                //                   "https://blog.hubspot.com/hubfs/image8-2.jpg",
+                //                 )),
+                //               ),
+                //             ),
+                //             const Padding(
+                //               padding: EdgeInsets.only(left: 10),
+                //               child: Text(
+                //                 'Sign in with Googleee',
+                //                 style: TextStyle(
+                //                   fontSize: 20,
+                //                   color: Colors.black54,
+                //                   fontWeight: FontWeight.w600,
+                //                 ),
+                //               ),
+                //             )
+                //           ])),
+                // )
               ],
             )),
       ),
@@ -137,7 +207,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (BuildContext context) => HomeScreen()));
+                          builder: (BuildContext context) =>
+                              const HomeScreen()));
                 }));
       } catch (e) {
         ReUse().loginErrorToast(e.toString());

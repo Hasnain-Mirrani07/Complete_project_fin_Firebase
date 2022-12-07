@@ -51,7 +51,8 @@ dependencies:
   cloud_firestore: ^4.1.0
   firebase_database: ^10.0.6
   firebase_storage: ^11.0.6
-
+  google_sign_in: ^5.4.2
+  font_awesome_flutter: ^10.3.0
   fluttertoast: ^8.1.1
 
 dev_dependencies:
