@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/gestures.dart';
@@ -5,17 +6,18 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constants.dart';
 
-class FetchDataScreen extends StatefulWidget {
-  FetchDataScreen({
+class FireStoreGetData extends StatefulWidget {
+  FireStoreGetData({
     super.key,
   });
 
   @override
-  State<FetchDataScreen> createState() => _FetchDataScreenState();
+  State<FireStoreGetData> createState() => _FireStoreGetDataState();
 }
 
-class _FetchDataScreenState extends State<FetchDataScreen> {
-  final databaseRef = FirebaseDatabase.instance.ref('Post');
+class _FireStoreGetDataState extends State<FireStoreGetData> {
+  final fireStore = FirebaseFirestore.instance.collection("users").snapshots();
+
   bool isLoading = true;
   final searchFilter = TextEditingController();
   final _editController = TextEditingController();
@@ -23,7 +25,7 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Show Data")),
+      appBar: AppBar(title: const Text("FireStore Get Data")),
       body: Column(
         children: [
           Padding(
@@ -35,23 +37,28 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
               },
             ),
           ),
-          Text("Firebase Anaimated List"),
-          Expanded(
-            child: FirebaseAnimatedList(
-                query: databaseRef,
-                defaultChild: Center(child: CircularProgressIndicator()),
-                itemBuilder: (context, snapshot, animation, index) {
-                  var _title = snapshot.child('title').value.toString();
-                  final id = snapshot.child("id").value.toString();
-                  final title = snapshot.child('title').value.toString();
-                  print("id==>> $databaseRef");
-
-                  if (searchFilter.text.isEmpty) {
+          const Text("Firebase Anaimated List"),
+          StreamBuilder<QuerySnapshot>(
+            stream: fireStore,
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return const Text('FireStore DAta Load Error');
+              } else {
+                return Expanded(
+                    child: ListView.builder(
+                  itemCount: snapshot.data!.docs.length,
+                  itemBuilder: (context, index) {
+                    final String id =
+                            snapshot.data!.docs[index]['id'].toString(),
+                        _title = snapshot.data!.docs[index]['title'].toString();
                     return ListTile(
-                        title: Text(title),
-                        subtitle: Text(snapshot.child("id").value.toString()),
+                        title: Text("title=> $_title"),
+                        subtitle: Text("id => $id"),
                         trailing: PopupMenuButton(
-                            icon: Icon(Icons.more_vert_sharp),
+                            icon: const Icon(Icons.more_vert_sharp),
                             itemBuilder: (BuildContext context) =>
                                 <PopupMenuEntry>[
                                   PopupMenuItem(
@@ -59,7 +66,7 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.of(context).pop();
-                                        _showMyDialog(title, id);
+                                        _showMyDialog(_title, id);
                                       },
                                       child: const ListTile(
                                         leading: Icon(Icons.edit),
@@ -72,42 +79,22 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
                                       child: GestureDetector(
                                         onTap: () {
                                           Navigator.of(context).pop();
-                                          databaseRef.child(id).remove();
+                                          FirebaseFirestore.instance
+                                              .collection('users')
+                                              .doc(id)
+                                              .delete();
                                         },
-                                        child: ListTile(
+                                        child: const ListTile(
                                           title: Text("Delete"),
                                           leading: Icon(Icons.delete),
                                         ),
                                       )),
                                 ]));
-                  } else if (_title.toLowerCase().contains(
-                      searchFilter.text.toLowerCase().toLowerCase())) {
-                    return ListTile(
-                      title: Text(snapshot.child('title').value.toString()),
-                      subtitle: Text(id),
-                      // trailing: PopupMenuButton(
-                      //     icon: Icon(Icons.more_vert_sharp),
-                      //     itemBuilder: (BuildContext context) =>
-                      //         <PopupMenuEntry>[
-                      //           const PopupMenuItem(
-                      //             value: 1,
-                      //             child: ListTile(
-                      //               leading: Icon(Icons.edit),
-                      //             ),
-                      //           ),
-                      //           const PopupMenuItem(
-                      //               value: 2,
-                      //               child: ListTile(
-                      //                 leading: Icon(Icons.delete),
-                      //               )),
-                      //         ]
-                      //         )
-                    );
-                  } else {
-                    return Container();
-                  }
-                }),
-          )
+                  },
+                ));
+              }
+            },
+          ),
         ],
       ),
     );
@@ -129,7 +116,7 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
 
                   // id = _editController.text;
 
-                  decoration: InputDecoration(hintText: "Edit Data"),
+                  decoration: const InputDecoration(hintText: "Edit Data"),
                 )
               ],
             ),
@@ -145,10 +132,13 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
               child: const Text('Submit'),
               onPressed: () {
                 try {
-                  databaseRef.child(id).update({
+                  FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(id)
+                      .update({
                     'title': _editController.text.toLowerCase()
                   }).then((value) =>
-                      ReUse().loginErrorToast("Data Updated Successfully"));
+                          ReUse().loginErrorToast("Data Updated Successfully"));
                   Navigator.of(context).pop();
                 } catch (e) {
                   ReUse().loginErrorToast("Failed to update $e");

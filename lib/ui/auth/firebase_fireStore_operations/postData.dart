@@ -1,25 +1,27 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:social_app/ui/auth/firebase_fireStore_operations/getdata.dart';
 import 'package:social_app/ui/auth/showresult/fetchdata_screen.dart';
 import 'package:social_app/ui/widgets/custom_button.dart';
 
 import '../../../utils/constants.dart';
 
-class PostDataScreen extends StatefulWidget {
-  const PostDataScreen({super.key});
+class FireStorePostData extends StatefulWidget {
+  const FireStorePostData({super.key});
 
   @override
-  State<PostDataScreen> createState() => _PostDataScreenState();
+  State<FireStorePostData> createState() => _FireStorePostDataState();
 }
 
-class _PostDataScreenState extends State<PostDataScreen> {
+class _FireStorePostDataState extends State<FireStorePostData> {
   final nameController = TextEditingController();
   final databaseReference = FirebaseDatabase.instance.ref('Post');
+  final firestore = FirebaseFirestore.instance.collection("users");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("FireStore Add Data")),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
         child: Column(
@@ -29,9 +31,6 @@ class _PostDataScreenState extends State<PostDataScreen> {
             ),
             TextFormField(
               controller: nameController,
-              onChanged: (value) {
-                nameController.text = "";
-              },
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'User Name',
@@ -49,12 +48,10 @@ class _PostDataScreenState extends State<PostDataScreen> {
                   try {
                     String id = DateTime.now().millisecond.toString();
                     //  debugPrint('press');
-                    databaseReference.child(id).set({
+                    firestore.doc(id).set({
                       'id': id,
                       'title': nameController.text.toString(),
                     }).then((value) {
-                      setState(() {});
-
                       ReUse().loginErrorToast("Data Added Succfully");
                     });
                     debugPrint(nameController.text);
@@ -72,7 +69,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FireStoreGetData(),
+                        builder: (context) => FetchDataScreen(),
                       ));
                 }),
           ],

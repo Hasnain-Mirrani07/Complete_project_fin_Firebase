@@ -107,8 +107,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextButton(
                   onPressed: () {},
-                  child: const Text(
-                    'Forgot Password',
+                  child: GestureDetector(
+                    onTap: () {
+                      _auth.sendPasswordResetEmail(email: nameController.text);
+                    },
+                    child: const Text(
+                      'Forgot Password',
+                    ),
                   ),
                 ),
                 Container(

@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:social_app/ui/auth/firebase_fireStore_operations/fireStore_mainscreen.dart';
+import 'package:social_app/ui/auth/home_screen/home_screen.dart';
 import 'package:social_app/ui/auth/login/login_screen.dart';
 import 'package:social_app/ui/auth/splash_screen/splash_screen.dart';
 
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: const FireStoreMainScree(),
     );
   }
 }
