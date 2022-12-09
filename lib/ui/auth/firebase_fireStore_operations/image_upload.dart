@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:social_app/utils/constants.dart';
 import 'package:video_player/video_player.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
@@ -185,16 +186,28 @@ class _ImageUploadingApiState extends State<ImageUploadingApi> {
                     ),
                     ElevatedButton(
                       onPressed: () async {
-                        firebase_storage.Reference ref = firebase_storage
-                            .FirebaseStorage.instance
-                            .ref('/foldername' + '123');
-                        firebase_storage.UploadTask uploadTask =
-                            ref.putFile(imagepath.absolute);
-                        await Future.value(uploadTask);
-                        var newurl = ref.getDownloadURL();
-                        setState(() {
-                          //upload(base64val, _vedio);
-                        });
+                        print("pres");
+                        try {
+                          var id = DateTime.now().millisecond.toString();
+                          firebase_storage.Reference ref = firebase_storage
+                              .FirebaseStorage.instance
+                              .ref('/foldername' + id);
+                          firebase_storage.UploadTask uploadTask =
+                              ref.putFile(imagepath!.absolute);
+                          await Future.value(uploadTask).then((value) async {
+                            var newurl = await ref.getDownloadURL();
+                            databaseRef
+                                .child(id)
+                                .set({'id': id, 'title': newurl.toString()});
+                            print("upload");
+                            ReUse().loginErrorToast("Succefully to upload");
+                            setState(() {
+                              //upload(base64val, _vedio);
+                            });
+                          });
+                        } catch (e) {
+                          return ReUse().loginErrorToast("Failed to upload");
+                        }
                       },
                       child: Text("upload"),
                     )
@@ -204,3 +217,7 @@ class _ImageUploadingApiState extends State<ImageUploadingApi> {
         ));
   }
 }
+
+
+
+
