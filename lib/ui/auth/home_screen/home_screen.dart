@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Main Screen"), actions: [
+      appBar: AppBar(title: const Text("Home screen"), actions: [
         GestureDetector(
             onTap: () {
               try {
