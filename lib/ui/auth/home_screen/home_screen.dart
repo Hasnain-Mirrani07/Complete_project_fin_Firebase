@@ -1,6 +1,8 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/ui/auth/login/login_screen.dart';
+import 'package:social_app/ui/auth/notifications.dart';
 import 'package:social_app/ui/auth/post_data/postdata_screen.dart';
 import 'package:social_app/ui/auth/showresult/fetchdata_screen.dart';
 import 'package:social_app/ui/widgets/custom_button.dart';
@@ -14,6 +16,41 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _auth = FirebaseAuth.instance;
+  @override
+  void initState() {
+    super.initState();
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text("AllowNotification"),
+              content: const Text("AllowNotification content"),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text("Don\t Allow"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    AwesomeNotifications()
+                        .requestPermissionToSendNotifications()
+                        .then((_) => Navigator.pop(context));
+                  },
+                  child: Text(
+                    "Allow",
+                    style: TextStyle(color: Colors.green),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +101,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context) => FetchDataScreen(),
                       ));
                 }),
+            ElevatedButton(
+              onPressed: createNotification,
+              child: Text("notification"),
+            )
           ],
         ),
       ),
