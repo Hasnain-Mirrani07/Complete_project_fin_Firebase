@@ -54,6 +54,8 @@ dependencies:
   fluttertoast: ^8.1.1
   image_picker: ^0.8.6
   video_player: ^2.4.8
+  awesome_notifications: ^0.7.4+1
+
 
 dev_dependencies:
   flutter_test:
