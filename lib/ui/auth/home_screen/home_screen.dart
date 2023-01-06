@@ -16,39 +16,28 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _auth = FirebaseAuth.instance;
+  void creatNotification() {
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+            id: 10,
+            channelKey: 'basic_channel',
+            title: 'Simple Notification',
+            body: 'Simple body',
+            actionType: ActionType.Default));
+  }
+
   @override
   void initState() {
     super.initState();
-    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
-      if (!isAllowed) {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: const Text("AllowNotification"),
-              content: const Text("AllowNotification content"),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text("Don\t Allow"),
-                ),
-                TextButton(
-                  onPressed: () {
-                    AwesomeNotifications()
-                        .requestPermissionToSendNotifications()
-                        .then((_) => Navigator.pop(context));
-                  },
-                  child: Text(
-                    "Allow",
-                    style: TextStyle(color: Colors.green),
-                  ),
-                ),
-              ],
-            );
-          },
-        );
-      }
-    });
+    // Only after at least the action method is set, the notification events are delivered
+    AwesomeNotifications().setListeners(
+        onActionReceivedMethod: NotificationController.onActionReceivedMethod,
+        onNotificationCreatedMethod:
+            NotificationController.onNotificationCreatedMethod,
+        onNotificationDisplayedMethod:
+            NotificationController.onNotificationDisplayedMethod,
+        onDismissActionReceivedMethod:
+            NotificationController.onDismissActionReceivedMethod);
   }
 
   @override
@@ -102,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ));
                 }),
             ElevatedButton(
-              onPressed: createNotification,
+              onPressed: creatNotification,
               child: Text("notification"),
             )
           ],
