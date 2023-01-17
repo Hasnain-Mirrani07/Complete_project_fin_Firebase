@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // Only after at least the action method is set, the notification events are delivered
+    // Only after at least the action method is srgerttrhrtyet, the notification events are delivered
     AwesomeNotifications().setListeners(
         onActionReceivedMethod: NotificationController.onActionReceivedMethod,
         onNotificationCreatedMethod:
@@ -64,8 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
         child: Column(
           children: [
-            Text("Home Screen"),
-            SizedBox(
+            const Text("Home Screen"),
+            const SizedBox(
               height: 30,
             ),
             FloatingActionButton(
@@ -74,11 +74,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PostDataScreen(),
+                      builder: (context) => const PostDataScreen(),
                     ));
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             CustomButton(
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 }),
             ElevatedButton(
               onPressed: creatNotification,
-              child: Text("notification"),
+              child: const Text("notification"),
             )
           ],
         ),

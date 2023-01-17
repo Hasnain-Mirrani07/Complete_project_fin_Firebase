@@ -1,13 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants.dart';
 
 class FireStoreGetData extends StatefulWidget {
-  FireStoreGetData({
+  const FireStoreGetData({
     super.key,
   });
 
@@ -45,7 +42,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const CircularProgressIndicator();
               } else if (snapshot.hasError) {
-                return const Text('FireStore DAta Load Error');
+                return const Text('FireStore fddrgdg DAta Load Errorr');
               } else {
                 return Expanded(
                     child: ListView.builder(
@@ -53,9 +50,9 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
                   itemBuilder: (context, index) {
                     final String id =
                             snapshot.data!.docs[index]['id'].toString(),
-                        _title = snapshot.data!.docs[index]['title'].toString();
+                        title = snapshot.data!.docs[index]['title'].toString();
                     return ListTile(
-                        title: Text("title=> $_title"),
+                        title: Text("title=> $title"),
                         subtitle: Text("id => $id"),
                         trailing: PopupMenuButton(
                             icon: const Icon(Icons.more_vert_sharp),
@@ -66,7 +63,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.of(context).pop();
-                                        _showMyDialog(_title, id);
+                                        _showMyDialog(title, id);
                                       },
                                       child: const ListTile(
                                         leading: Icon(Icons.edit),
