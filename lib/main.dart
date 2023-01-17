@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/ui/auth/firebase_fireStore_operations/fireStore_mainscreen.dart';
@@ -5,6 +6,7 @@ import 'package:social_app/ui/auth/firebase_fireStore_operations/image_upload.da
 import 'package:social_app/ui/auth/home_screen/home_screen.dart';
 import 'package:social_app/ui/auth/login/login_screen.dart';
 import 'package:social_app/ui/auth/splash_screen/splash_screen.dart';
+
 final urlLandscapeVideo =
     'https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-partying-happily-4640-large.mp4';
 final urlPortraitVideo =
@@ -13,6 +15,29 @@ final urlYoutubeVideo = 'https://youtube.com/watch?v=HSAa9yi0OMA';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  ReceivedAction? receivedAction = await AwesomeNotifications()
+      .getInitialNotificationAction(removeFromActionEvents: false);
+  // if(receivedAction?.channelKey == 'call_channel') setInitialPageToCallPage();
+  // else setInitialPageToHomePage();
+  AwesomeNotifications().initialize(
+      // set the icon to null if you want to use the default app icon
+      'resource://drawable/res_app_icon',
+      [
+        NotificationChannel(
+            channelGroupKey: 'basic_channel_group',
+            channelKey: 'basic_channel',
+            channelName: 'Basic notifications',
+            channelDescription: 'Notification channel for basic tests',
+            defaultColor: Color(0xFF9D50DD),
+            ledColor: Colors.white)
+      ],
+      // Channel groups are only visual and are not required
+      channelGroups: [
+        NotificationChannelGroup(
+            channelGroupKey: 'basic_channel_group',
+            channelGroupName: 'Basic group')
+      ],
+      debug: true);
   runApp(const MyApp());
 }
 
@@ -25,18 +50,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
+        //thdfofdjf;lkdjflsajf
         primarySwatch: Colors.blue,
       ),
-      home: const ImageUploadingApi(),
+      home: const HomeScreen(),
     );
   }
 }
