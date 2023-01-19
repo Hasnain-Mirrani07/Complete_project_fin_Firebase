@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {});
     } catch (e) {
       print("Error : $e");
-      ReUse().loginErrorToast("Google Sign Error");
+      ReUse().loginErrorToast("Google Sign has Error");
     }
   }
 
