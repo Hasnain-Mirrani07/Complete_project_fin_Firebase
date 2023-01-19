@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               const LoginScreen()));
                 });
               } catch (e) {
-                const Text("Not logout yet");
+                const Text("Not abc logout yet");
               }
             },
             child: const Icon(Icons.login_outlined))
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
         child: Column(
           children: [
-            const Text("Home Screen"),
+            const Text("Homee Screen"),
             const SizedBox(
               height: 30,
             ),
