@@ -27,13 +27,13 @@ class _FireStorePostDataState extends State<FireStorePostData> {
         child: Column(
           children: [
             const Center(
-              child: Text("Post DAta Screen"),
+              child: Text("Post Data Screen"),
             ),
             TextFormField(
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'User Namee',
+                labelText: 'User Name',
               ),
               validator: (value) {
                 if (value!.isEmpty) {
