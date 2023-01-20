@@ -21,7 +21,7 @@ class _FireStorePostDataState extends State<FireStorePostData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("FireStore Add Data")),
+      appBar: AppBar(title: const Text("FireStore Addd Data")),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
         child: Column(
@@ -33,7 +33,7 @@ class _FireStorePostDataState extends State<FireStorePostData> {
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'User Name',
+                labelText: 'User Namee',
               ),
               validator: (value) {
                 if (value!.isEmpty) {

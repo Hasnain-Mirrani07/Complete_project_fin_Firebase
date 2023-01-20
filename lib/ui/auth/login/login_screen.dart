@@ -38,11 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
       await FirebaseAuth.instance.signInWithCredential(credential);
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => const HomeScreen()));
-      print("fonction run");
+      print("fonction rrun");
       setState(() {});
     } catch (e) {
       print("Error : $e");
-      ReUse().loginErrorToast("Google Sign has Error");
+      ReUse().loginErrorToast("Google Sign  Error");
     }
   }
 
