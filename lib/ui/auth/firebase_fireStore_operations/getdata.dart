@@ -50,9 +50,9 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
                   itemBuilder: (context, index) {
                     final String id =
                             snapshot.data!.docs[index]['id'].toString(),
-                        title = snapshot.data!.docs[index]['title'].toString();
+                        title = snapshot.data!.docs[index]['titlle'].toString();
                     return ListTile(
-                        title: Text("title=> $title"),
+                        title: Text("titlee=> $title"),
                         subtitle: Text("id => $id"),
                         trailing: PopupMenuButton(
                             icon: const Icon(Icons.more_vert_sharp),
@@ -135,7 +135,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
                       .update({
                     'title': _editController.text.toLowerCase()
                   }).then((value) =>
-                          ReUse().loginErrorToast("Data Updated Successfully"));
+                          ReUse().loginErrorToast("Data Updateed Successfully"));
                   Navigator.of(context).pop();
                 } catch (e) {
                   ReUse().loginErrorToast("Failed to update $e");

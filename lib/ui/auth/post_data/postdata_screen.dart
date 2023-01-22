@@ -25,7 +25,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
         child: Column(
           children: [
             const Center(
-              child: Text("Post DAta Screen"),
+              child: Text("Post DAta Scrreen"),
             ),
             TextFormField(
               controller: nameController,
@@ -72,7 +72,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FireStoreGetData(),
+                        builder: (context) => const FireStoreGetData(),
                       ));
                 }),
           ],
