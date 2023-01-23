@@ -25,7 +25,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
         child: Column(
           children: [
             const Center(
-              child: Text("Post DAta Scrreen"),
+              child: Text("Post DAta Screen"),
             ),
             TextFormField(
               controller: nameController,
@@ -34,7 +34,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
               },
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'User Name',
+                labelText: 'User Naame',
               ),
               validator: (value) {
                 if (value!.isEmpty) {
