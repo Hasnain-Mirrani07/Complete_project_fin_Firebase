@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants.dart';
 
 class FetchDataScreen extends StatefulWidget {
-  FetchDataScreen({
+  const FetchDataScreen({
     super.key,
   });
 
@@ -23,7 +23,7 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Show Data")),
+      appBar: AppBar(title: const Text("Show Data")),
       body: Column(
         children: [
           Padding(
@@ -35,13 +35,13 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
               },
             ),
           ),
-          Text("Firebasee Anaimated Llist"),
+          const Text("Firebasee Anitmated Llist"),
           Expanded(
             child: FirebaseAnimatedList(
                 query: databaseRef,
-                defaultChild: Center(child: CircularProgressIndicator()),
+                defaultChild: const Center(child: CircularProgressIndicator()),
                 itemBuilder: (context, snapshot, animation, index) {
-                  var _title = snapshot.child('title').value.toString();
+                  var title = snapshot.child('title').value.toString();
                   final id = snapshot.child("id").value.toString();
                   final title = snapshot.child('title').value.toString();
                   print("id==>> $databaseRef");
@@ -51,7 +51,7 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
                         title: Text(title),
                         subtitle: Text(snapshot.child("id").value.toString()),
                         trailing: PopupMenuButton(
-                            icon: Icon(Icons.more_vert_sharp),
+                            icon: const Icon(Icons.more_vert_sharp),
                             itemBuilder: (BuildContext context) =>
                                 <PopupMenuEntry>[
                                   PopupMenuItem(
@@ -74,13 +74,13 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
                                           Navigator.of(context).pop();
                                           databaseRef.child(id).remove();
                                         },
-                                        child: ListTile(
+                                        child: const ListTile(
                                           title: Text("Delete"),
                                           leading: Icon(Icons.delete),
                                         ),
                                       )),
                                 ]));
-                  } else if (_title.toLowerCase().contains(
+                  } else if (title.toLowerCase().contains(
                       searchFilter.text.toLowerCase().toLowerCase())) {
                     return ListTile(
                       title: Text(snapshot.child('title').value.toString()),
@@ -129,7 +129,7 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
 
                   // id = _editController.text;
 
-                  decoration: InputDecoration(hintText: "Edit Data"),
+                  decoration: const InputDecoration(hintText: "Edit Data"),
                 )
               ],
             ),
