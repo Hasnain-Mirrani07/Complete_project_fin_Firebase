@@ -1,7 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/ui/auth/firebase_fireStore_operations/getdata.dart';
-import 'package:social_app/ui/auth/showresult/fetchdata_screen.dart';
 import 'package:social_app/ui/widgets/custom_button.dart';
 
 import '../../../utils/constants.dart';
@@ -25,7 +24,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
         child: Column(
           children: [
             const Center(
-              child: Text("Post Data Screen"),
+              child: Text("Post Dhta Screen"),
             ),
             TextFormField(
               controller: nameController,
@@ -34,7 +33,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
               },
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'User Naame',
+                labelText: 'User Name',
               ),
               validator: (value) {
                 if (value!.isEmpty) {
