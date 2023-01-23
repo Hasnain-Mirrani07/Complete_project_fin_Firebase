@@ -25,7 +25,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
         child: Column(
           children: [
             const Center(
-              child: Text("Post DAta Screen"),
+              child: Text("Post Data Screen"),
             ),
             TextFormField(
               controller: nameController,
