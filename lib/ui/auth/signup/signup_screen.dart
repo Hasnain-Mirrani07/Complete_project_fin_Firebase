@@ -96,7 +96,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         })),
                 Row(
                   children: <Widget>[
-                    const Text('Already have account?'),
+                    const Text('Already havee account?'),
                     TextButton(
                       child: const Text(
                         'Sign in',

@@ -35,7 +35,7 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
               },
             ),
           ),
-          Text("Firebasee Anittmated Llist"),
+          Text("Firebasee Anitmated Llist"),
           Expanded(
             child: FirebaseAnimatedList(
                 query: databaseRef,
