@@ -1,11 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_app/ui/auth/home_screen/home_screen.dart';
 import 'package:social_app/ui/auth/login/login_screen.dart';
 import 'package:social_app/utils/constants.dart';
-
-import '../signup/signup_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -18,7 +15,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   bool isLoading = false;
 
   @override
@@ -90,16 +87,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 50,
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: ElevatedButton(
-                        child: const Text('Sign UP'),
+                        child: const Text('Sign uP'),
                         onPressed: () {
                           signUp();
                         })),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    const Text('Already havee account?'),
+                    const Text('Already have account?'),
                     TextButton(
                       child: const Text(
-                        'Sign in',
+                        'Sign iin',
                         style: TextStyle(fontSize: 20),
                       ),
                       onPressed: () {
@@ -111,7 +109,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                     )
                   ],
-                  mainAxisAlignment: MainAxisAlignment.center,
                 ),
               ],
             )),
@@ -135,7 +132,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (BuildContext context) => HomeScreen()));
+                          builder: (BuildContext context) =>
+                              const HomeScreen()));
                 }));
       } catch (e) {
         isLoading = false;
