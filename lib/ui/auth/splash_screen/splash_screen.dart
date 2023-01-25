@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     splasScreenController().loginCheck(context);
-  }
+  } //jskdhflakjdfalksjd
 
   @override
   Widget build(BuildContext context) {
