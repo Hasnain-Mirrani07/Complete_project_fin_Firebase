@@ -12,11 +12,11 @@ class _TestClassState extends State<TestClass> {
   List item = [];
   List item2 = [];
   List item3 = [
-    {"string": 1},
+    {"stringg": 1},
     {"string": 1},
   ];
 
-  List item5 = ['balcony', 'electricity', 'sui Gas'];
+  List item5 = ['balcoony', 'electricity', 'suii Gas'];
   List item4 = [];
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class _TestClassState extends State<TestClass> {
                   Map object = {index1: index1};
                   item4.add(object);
                   print("item 4 ==>$item4");
-                  // //  item.add(1);
+
                   // item2.add("string");
 
                   // print(item);
