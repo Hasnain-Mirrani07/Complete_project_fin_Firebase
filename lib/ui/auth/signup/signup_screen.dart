@@ -50,7 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: nameController,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'User Name',
+                      labelText: 'Userr Name',
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -94,7 +94,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    const Text('Already have account?'),
+                    const Text('Already haave account?'),
                     TextButton(
                       child: const Text(
                         'Sign iin',
