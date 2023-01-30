@@ -41,7 +41,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     alignment: Alignment.center,
                     padding: const EdgeInsets.all(10),
                     child: const Text(
-                      'Signn Up',
+                      'Sign Up',
                       style: TextStyle(fontSize: 20),
                     )),
                 Container(
