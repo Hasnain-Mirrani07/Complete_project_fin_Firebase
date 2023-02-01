@@ -56,7 +56,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       if (value!.isEmpty) {
                         return "Enter your email";
                       }
-                      return null;
                     },
                   ),
                 ),
