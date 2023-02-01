@@ -41,7 +41,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     alignment: Alignment.center,
                     padding: const EdgeInsets.all(10),
                     child: const Text(
-                      'Siggn Up',
+                      'Sign Up',
                       style: TextStyle(fontSize: 20),
                     )),
                 Container(
@@ -50,13 +50,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: nameController,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Useer Name',
+                      labelText: 'User Name',
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "Enter your email";
                       }
-                      return null;
                     },
                   ),
                 ),
