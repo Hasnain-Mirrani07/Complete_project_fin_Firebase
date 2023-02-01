@@ -50,12 +50,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: nameController,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'User Name',
+                      labelText: 'Useer Name',
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Enter your email";
+                        return "Enter yoour email";
                       }
+                      return null;
                     },
                   ),
                 ),
