@@ -54,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Enter your email";
+                        return "Entter your email";
                       }
                       return null;
                     },
