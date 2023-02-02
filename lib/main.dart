@@ -2,11 +2,6 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/test.dart';
-import 'package:social_app/ui/auth/firebase_fireStore_operations/fireStore_mainscreen.dart';
-import 'package:social_app/ui/auth/firebase_fireStore_operations/image_upload.dart';
-import 'package:social_app/ui/auth/home_screen/home_screen.dart';
-import 'package:social_app/ui/auth/login/login_screen.dart';
-import 'package:social_app/ui/auth/splash_screen/splash_screen.dart';
 
 const urlLandscapeVideo =
     'https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-partying-happily-4640-large.mp4';
@@ -49,7 +44,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flurter Dmmo',
+      title: 'Flurtter Dmmo',
       theme: ThemeData(
         //thdfofdjf;lkdjflhdfghdfhdgfhs
         primarySwatch: Colors.blue,
