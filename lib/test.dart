@@ -16,7 +16,7 @@ class _TestClassState extends State<TestClass> {
     {"string": 1},
   ];
 
-  List item5 = ['balcoony', 'electrricity', 'suii Gas'];
+  List item5 = ['balcoony', 'electrcity', 'suii Gas'];
   List item4 = [];
   @override
   Widget build(BuildContext context) {
