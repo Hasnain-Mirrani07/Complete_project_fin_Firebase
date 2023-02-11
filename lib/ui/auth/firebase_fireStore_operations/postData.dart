@@ -27,7 +27,7 @@ class _FireStorePostDataState extends State<FireStorePostData> {
         child: Column(
           children: [
             const Center(
-              child: Text("Post Data Screen"),
+              child: Text("Post Daata Screen"),
             ),
             TextFormField(
               controller: nameController,
