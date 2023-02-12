@@ -54,7 +54,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
                     }).then((value) {
                       setState(() {});
 
-                      ReUse().loginErrorToast("Data Added Succffully");
+                      ReUse().loginErrorToast("Data Aded Succfully");
                     });
                     debugPrint(nameController.text);
                     // debugPrint(databaseReference.toString());
