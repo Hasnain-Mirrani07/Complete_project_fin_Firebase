@@ -21,7 +21,7 @@ class _FireStorePostDataState extends State<FireStorePostData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("FireStore Add Data")),
+      appBar: AppBar(title: const Text("FireStore Ad Data")),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
         child: Column(
@@ -37,7 +37,7 @@ class _FireStorePostDataState extends State<FireStorePostData> {
               ),
               validator: (value) {
                 if (value!.isEmpty) {
-                  return "Enteer your email";
+                  return "Enter your email";
                 }
                 return null;
               },
