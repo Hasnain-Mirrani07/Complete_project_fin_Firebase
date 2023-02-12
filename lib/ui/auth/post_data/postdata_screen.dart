@@ -66,7 +66,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
                   }
                 }),
             CustomButton(
-                title: "Show Data",
+                title: "Show Daata",
                 onPressed: () {
                   Navigator.push(
                       context,
