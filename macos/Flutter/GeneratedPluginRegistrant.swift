@@ -12,7 +12,7 @@ import firebase_core
 import firebase_database
 import firebase_storage
 import modal_progress_hud_nsn
-import shared_preferences_macos
+import shared_preferences_foundation
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   AwesomeNotificationsPlugin.register(with: registry.registrar(forPlugin: "AwesomeNotificationsPlugin"))

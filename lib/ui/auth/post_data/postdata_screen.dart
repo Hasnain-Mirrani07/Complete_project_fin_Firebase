@@ -54,7 +54,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
                     }).then((value) {
                       setState(() {});
 
-                      ReUse().loginErrorToast("Data Added Succffully");
+                      ReUse().loginErrorToast("Data Aded Succfully");
                     });
                     debugPrint(nameController.text);
                     // debugPrint(databaseReference.toString());
@@ -66,7 +66,7 @@ class _PostDataScreenState extends State<PostDataScreen> {
                   }
                 }),
             CustomButton(
-                title: "Show Data",
+                title: "Show Daata",
                 onPressed: () {
                   Navigator.push(
                       context,
