@@ -55,6 +55,8 @@ dependencies:
   image_picker: ^0.8.6
   video_player: ^2.4.8
   awesome_notifications: ^0.7.4+1
+  chat_gpt_sdk: ^1.0.2+4
+  
 
 
 dev_dependencies:

@@ -2,6 +2,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/test.dart';
+import 'package:social_app/testcode/chatgpt.dart';
 
 const urlLandscapeVideo =
     'https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-partying-happily-4640-large.mp4';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         //thdfofdjf;lkdjflhdfghdfhdgfhs
         primarySwatch: Colors.blue,
       ),
-      home: const TestClass(),
+      home: const ChatGptScreen(),
     );
   }
 }
