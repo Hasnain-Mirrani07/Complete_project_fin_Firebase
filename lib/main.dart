@@ -1,7 +1,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:social_app/test.dart';
 import 'package:social_app/testcode/chatgpt.dart';
 
 const urlLandscapeVideo =
@@ -45,7 +44,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Dmemo',
+      title: 'Flutter Dmmo',
       theme: ThemeData(
         //thdfofdjf;lkdjflhdfghdfhdgfhs
         primarySwatch: Colors.blue,
