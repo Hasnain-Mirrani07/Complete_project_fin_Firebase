@@ -31,7 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     alignment: Alignment.center,
                     padding: const EdgeInsets.all(10),
                     child: const Text(
-                      'Tutialart',
+                      'Tuttialart',
                       style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.w500,
