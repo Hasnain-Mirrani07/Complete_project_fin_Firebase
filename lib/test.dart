@@ -35,11 +35,12 @@ class _TestClassState extends State<TestClass> {
 
                   // var growableList = [1, 2];
                   // print(growableList);
-
-                  index1++;
-                  Map object = {index1: index1};
-                  item4.add(object);
-                  print("item 4 ==>$item4");
+                  fucntionCall() {
+                    index1++;
+                    Map object = {index1: index1};
+                    item4.add(object);
+                    print("item 4 ==>$item4");
+                  }
 
                   // item2.add("string");
 
