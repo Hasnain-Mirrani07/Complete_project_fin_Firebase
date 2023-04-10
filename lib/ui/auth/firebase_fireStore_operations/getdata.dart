@@ -42,7 +42,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const CircularProgressIndicator();
               } else if (snapshot.hasError) {
-                return const Text('FireStore fddrgdg DAta Load Errorr');
+                return const Text('FireStoree fddrgdg DAta Load Errorr');
               } else {
                 return Expanded(
                     child: ListView.builder(
@@ -52,7 +52,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
                             snapshot.data!.docs[index]['id'].toString(),
                         title = snapshot.data!.docs[index]['titlle'].toString();
                     return ListTile(
-                        title: Text("titlee=> $title"),
+                        title: Text("titllee=> $title"),
                         subtitle: Text("id => $id"),
                         trailing: PopupMenuButton(
                             icon: const Icon(Icons.more_vert_sharp),
