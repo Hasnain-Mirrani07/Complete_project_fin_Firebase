@@ -42,7 +42,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const CircularProgressIndicator();
               } else if (snapshot.hasError) {
-                return const Text('FireStoree fddrgdg DAta Load Errorr');
+                return const Text('FireStoree frjgdg DAta Load Ergrorr');
               } else {
                 return Expanded(
                     child: ListView.builder(
@@ -52,7 +52,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
                             snapshot.data!.docs[index]['id'].toString(),
                         title = snapshot.data!.docs[index]['titlle'].toString();
                     return ListTile(
-                        title: Text("titllee=> $title"),
+                        title: Text("titlle=> $title"),
                         subtitle: Text("id => $id"),
                         trailing: PopupMenuButton(
                             icon: const Icon(Icons.more_vert_sharp),
@@ -134,8 +134,8 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
                       .doc(id)
                       .update({
                     'title': _editController.text.toLowerCase()
-                  }).then((value) =>
-                          ReUse().loginErrorToast("Data Updateed Successfully"));
+                  }).then((value) => ReUse()
+                          .loginErrorToast("Data Updateed Successfully"));
                   Navigator.of(context).pop();
                 } catch (e) {
                   ReUse().loginErrorToast("Failed to update $e");
