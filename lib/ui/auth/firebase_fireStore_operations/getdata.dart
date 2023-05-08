@@ -34,7 +34,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
               },
             ),
           ),
-          const Text("Firebase Anaimated Lisst"),
+          const Text("Firebase Anaimated List"),
           StreamBuilder<QuerySnapshot>(
             stream: fireStore,
             builder:
@@ -134,8 +134,8 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
                       .doc(id)
                       .update({
                     'title': _editController.text.toLowerCase()
-                  }).then((value) =>
-                          ReUse().loginErrorToast("Data Updateed Successfully"));
+                  }).then((value) => ReUse()
+                          .loginErrorToast("Data Updateed Successfully"));
                   Navigator.of(context).pop();
                 } catch (e) {
                   ReUse().loginErrorToast("Failed to update $e");

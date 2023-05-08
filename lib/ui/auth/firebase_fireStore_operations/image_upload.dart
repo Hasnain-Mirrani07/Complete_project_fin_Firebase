@@ -38,7 +38,7 @@ class _ImageUploadingApiState extends State<ImageUploadingApi> {
       // print(imagepath);
       setState(() {});
     } else {
-      Text("no image selected");
+      const Text("no immage selected");
     }
   }
 
@@ -133,7 +133,7 @@ class _ImageUploadingApiState extends State<ImageUploadingApi> {
         inAsyncCall: spinner,
         child: Scaffold(
           appBar: AppBar(
-            title: Text("Image Uploading Api"),
+            title: const Text("Image Uploading Api"),
           ),
           body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -161,7 +161,7 @@ class _ImageUploadingApiState extends State<ImageUploadingApi> {
                 Column(
                   children: [
                     if (_vedio != null)
-                      Container(
+                      SizedBox(
                           height: 300,
                           width: 400,
                           child: _videoPlayerController!.value.isInitialized
@@ -191,7 +191,7 @@ class _ImageUploadingApiState extends State<ImageUploadingApi> {
                           var id = DateTime.now().millisecond.toString();
                           firebase_storage.Reference ref = firebase_storage
                               .FirebaseStorage.instance
-                              .ref('/foldername' + id);
+                              .ref('/foldername$id');
                           firebase_storage.UploadTask uploadTask =
                               ref.putFile(imagepath!.absolute);
                           await Future.value(uploadTask).then((value) async {
@@ -209,7 +209,7 @@ class _ImageUploadingApiState extends State<ImageUploadingApi> {
                           return ReUse().loginErrorToast("Failed to upload");
                         }
                       },
-                      child: Text("upload"),
+                      child: const Text("upload"),
                     )
                   ],
                 ),
@@ -217,7 +217,3 @@ class _ImageUploadingApiState extends State<ImageUploadingApi> {
         ));
   }
 }
-
-
-
-
