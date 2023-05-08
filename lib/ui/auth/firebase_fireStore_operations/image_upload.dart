@@ -1,8 +1,5 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -38,7 +35,7 @@ class _ImageUploadingApiState extends State<ImageUploadingApi> {
       // print(imagepath);
       setState(() {});
     } else {
-      const Text("no immage selected");
+      const Text("no immage sellected");
     }
   }
 

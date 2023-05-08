@@ -42,7 +42,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const CircularProgressIndicator();
               } else if (snapshot.hasError) {
-                return const Text('FireStoree fddrgdg DAta Load Errorr');
+                return const Text('FireStoree fddrjgdg DAta Load Errorr');
               } else {
                 return Expanded(
                     child: ListView.builder(
