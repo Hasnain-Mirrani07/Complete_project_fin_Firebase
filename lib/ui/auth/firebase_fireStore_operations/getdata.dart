@@ -34,7 +34,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
               },
             ),
           ),
-          const Text("Firebase Anaimated List"),
+          const Text("Firebase Anaimated Lisst"),
           StreamBuilder<QuerySnapshot>(
             stream: fireStore,
             builder:
@@ -52,7 +52,7 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
                             snapshot.data!.docs[index]['id'].toString(),
                         title = snapshot.data!.docs[index]['titlle'].toString();
                     return ListTile(
-                        title: Text("titllee=> $title"),
+                        title: Text("titlle=> $title"),
                         subtitle: Text("id => $id"),
                         trailing: PopupMenuButton(
                             icon: const Icon(Icons.more_vert_sharp),
