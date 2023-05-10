@@ -16,7 +16,7 @@ class _TestClassState extends State<TestClass> {
     {"string": 1},
   ];
 
-  List item5 = ['balcoony', 'electcitty', 'suii Gas'];
+  List item5 = ['balcoony', 'electtcitty', 'suii Gas'];
   List item4 = [];
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _TestClassState extends State<TestClass> {
           children: [
             Center(
               child: ElevatedButton(
-                child: const Text("buttton"),
+                child: const Text("button"),
                 onPressed: () {
                   // var fixedLengthList = List<int>.filled(5, 1);
                   // fixedLengthList[0] = 87;
