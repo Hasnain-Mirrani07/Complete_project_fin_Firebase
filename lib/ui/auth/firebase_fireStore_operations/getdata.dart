@@ -149,27 +149,26 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
   }
 }
 
-
 //     Expanded(
-          //   child: StreamBuilder(
-          //     stream: databaseRef.onValue,
-          //     builder: (context, AsyncSnapshot<DatabaseEvent> snapshot) {
-          //       if (!snapshot.hasData) {
-          //         return CircularProgressIndicator();
-          //       } else {
-          //         List<dynamic> list = [];
-          //         Map<dynamic, dynamic> map =
-          //             snapshot.data!.snapshot.value as Map;
-          //         list = map.values.toList();
-          //         return ListView.builder(
-          //             itemCount: snapshot.data?.snapshot.children.length,
-          //             itemBuilder: (context, index) {
-          //               return ListTile(
-          //                 title: Text(list[index]['title'].toString()),
-          //                 subtitle: Text(list[index]['title'].toString()),
-          //               );
-          //             });
-          //       }
-          //     },
-          //   ),
-          // ),
+//   child: StreamBuilder(
+//     stream: databaseRef.onValue,
+//     builder: (context, AsyncSnapshot<DatabaseEvent> snapshot) {
+//       if (!snapshot.hasData) {
+//         return CircularProgressIndicator();
+//       } else {
+//         List<dynamic> list = [];
+//         Map<dynamic, dynamic> map =
+//             snapshot.data!.snapshot.value as Map;
+//         list = map.values.toList();
+//         return ListView.builder(
+//             itemCount: snapshot.data?.snapshot.children.length,
+//             itemBuilder: (context, index) {
+//               return ListTile(
+//                 title: Text(list[index]['title'].toString()),
+//                 subtitle: Text(list[index]['title'].toString()),
+//               );
+//             });
+//       }
+//     },
+//   ),
+// ),
