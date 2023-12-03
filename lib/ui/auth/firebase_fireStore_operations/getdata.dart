@@ -216,3 +216,55 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
 //                 //     },
 //                 //   ),
 //                 // ),
+
+//Filtered List from FireStore-------
+
+//StreamBuilder<QuerySnapshot>(
+//       stream: fireStore,
+//       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+//         if (snapshot.connectionState == ConnectionState.waiting) {
+//           return const CircularProgressIndicator();
+//         } else if (snapshot.hasError) {
+//           return const Text('FireStore Error');
+//         } else {
+//           List<String> l = [];
+//           List<String> filterList = [];
+//
+//           //Generic List Get
+//           snapshot.data!.docs
+//               .map((e) => l.add(e['fullName'].toString()))
+//               .toList();
+//
+//           //Filter List Get
+//           snapshot.data!.docs.where((i) {
+//             if (i['usertype'].toString() == "Student") {
+//               filterList.add(i['fullName']);
+//             }
+//             return true;
+//           }).toList();
+//
+//           print("drop down list =====$l  ===  $filterList");
+//           return Obx(
+//             () => SizedBox(
+//                 width: 150,
+//                 child: DropdownButton<String>(
+//                   value: selectedStudent.value.isNotEmpty
+//                       ? selectedStudent.value
+//                       : "",
+//                   items: l.map((String value) {
+//                     return DropdownMenuItem<String>(
+//                       value: value,
+//                       child: Text(value),
+//                     );
+//                   }).toList(),
+//                   onChanged: (String? val) {
+//                     selectedStudent.value = val ?? "";
+//                     print(
+//                         "selected val====> $val  === ${selectedStudent.value}");
+//                   },
+//                 )),
+//           );
+//         }
+//       },
+//     );
+//
