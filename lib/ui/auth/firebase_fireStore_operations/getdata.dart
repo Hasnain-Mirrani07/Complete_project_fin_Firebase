@@ -172,3 +172,47 @@ class _FireStoreGetDataState extends State<FireStoreGetData> {
 //     },
 //   ),
 // ),
+
+//Get Data and show in DropDown
+// //
+//                 // Expanded(
+//                 //   child: StreamBuilder<QuerySnapshot>(
+//                 //     stream: viewmodel.fireStore,
+//                 //     builder: (BuildContext context,
+//                 //         AsyncSnapshot<QuerySnapshot> snapshot) {
+//                 //       if (snapshot.connectionState == ConnectionState.waiting) {
+//                 //         return const CircularProgressIndicator();
+//                 //       } else if (snapshot.hasError) {
+//                 //         return const Text('FireStore Error');
+//                 //       } else {
+//                 //         List<String> l = [];
+//                 //
+//                 //         snapshot.data!.docs
+//                 //             .map((e) => l.add(e['fullName'].toString()))
+//                 //             .toList();
+//                 //         print("drop down list =====$l");
+//                 //         return Obx(
+//                 //               () => SizedBox(
+//                 //               width: 150,
+//                 //               child: DropdownButton<String>(
+//                 //                 value:
+//                 //                 viewmodel.selectedStudent.value.isNotEmpty
+//                 //                     ? viewmodel.selectedStudent.value
+//                 //                     : "",
+//                 //                 items: l.map((String value) {
+//                 //                   return DropdownMenuItem<String>(
+//                 //                     value: value,
+//                 //                     child: Text(value),
+//                 //                   );
+//                 //                 }).toList(),
+//                 //                 onChanged: (String? val) {
+//                 //                   viewmodel.selectedStudent.value = val ?? "";
+//                 //                   print(
+//                 //                       "selected val====> $val  === ${viewmodel.selectedStudent.value}");
+//                 //                 },
+//                 //               )),
+//                 //         );
+//                 //       }
+//                 //     },
+//                 //   ),
+//                 // ),
