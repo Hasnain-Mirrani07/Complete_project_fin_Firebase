@@ -16,3 +16,40 @@
 //     );
 //   }
 // // }
+
+
+
+
+
+
+//
+// QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+//     .collection('Hours')
+// .where("userId", isEqualTo: userId)
+//     .get();
+//
+// if (querySnapshot.docs.isNotEmpty) {
+// List<String> officeHoursList = [];
+// querySnapshot.docs.forEach((doc) {
+// String day = doc['Day'];
+// List<dynamic> periods = doc['Period'];
+// officeHoursList.add('$day: ${periods.join(', ')}');
+// });
+
+
+
+
+
+//  checkAdvisoryId() async {
+//     bool isExist = false;
+//     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+//         .collection('joinAdvisor')
+//         .where("advisoryId", isEqualTo: userId)
+//         .where("studentUserId", isEqualTo: currentUserId)
+//         .get();
+//
+//     if (querySnapshot.docs.length >= 1) {
+//       isExist = true;
+//     }
+//     return isExist;
+//   }
